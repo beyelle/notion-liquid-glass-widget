@@ -1,10 +1,4 @@
-/* ===========================
-   BABY PINK LIQUID GLASS (Notion iframe-safe)
-   - Transparent page (no ugly box)
-   - Black text
-   - Simulated iOS liquid glass (works even when true backdrop blur can't)
-   =========================== */
-
+/* Transparent page (no iframe box look) */
 html, body {
   background: transparent !important;
   margin: 0;
@@ -12,24 +6,25 @@ html, body {
 }
 
 :root{
-  /* baby pink glass */
-  --pinkA: rgba(255, 170, 210, .35);
-  --pinkB: rgba(255, 210, 235, .22);
+  /* Baby pink liquid glass */
+  --glassA: rgba(255, 175, 215, .35);
+  --glassB: rgba(255, 220, 240, .22);
+  --stroke: rgba(255, 140, 195, .38);
 
-  /* edges */
-  --stroke1: rgba(255, 120, 180, .45);
-  --stroke2: rgba(255, 255, 255, .55);
+  /* Text in black/dark */
+  --text: rgba(15, 15, 20, .92);
+  --muted: rgba(25, 25, 32, .68);
+  --muted2: rgba(25, 25, 32, .54);
 
-  /* black text */
-  --text: rgba(12, 12, 16, .92);
-  --muted: rgba(20, 20, 28, .68);
-  --muted2: rgba(20, 20, 28, .55);
+  /* Glow */
+  --glow1: rgba(255, 120, 180, .18);
+  --glow2: rgba(255, 120, 180, .10);
 }
 
 *{ box-sizing: border-box; }
 
 body{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color: var(--text);
   background: transparent !important;
 }
@@ -43,58 +38,54 @@ body{
   background: transparent !important;
 }
 
-/* ---- Card: simulated liquid glass ---- */
+/* LÄNGLICH + weniger hoch */
 .card{
   position: relative;
-  width: min(560px, 92vw);
+  width: min(900px, 96vw);
   border-radius: 28px;
-  padding: 22px 22px 18px;
+  padding: 16px 18px 14px;
 
-  /* This is the key “glass body” */
+  /* “iOS liquid glass” simulation (works in Notion iframe) */
   background:
-    /* soft top highlight */
-    radial-gradient(120% 140% at 20% 10%, rgba(255,255,255,.80), transparent 45%),
-    /* baby pink tint */
-    linear-gradient(135deg, var(--pinkA), var(--pinkB));
+    radial-gradient(120% 160% at 18% 10%, rgba(255,255,255,.85), transparent 46%),
+    linear-gradient(135deg, var(--glassA), var(--glassB));
 
-  /* glass edge: double stroke (apple-ish) */
-  border: 1px solid var(--stroke1);
+  border: 1px solid var(--stroke);
+
   box-shadow:
-    /* outer glow so it stands out on white Notion */
-    0 14px 34px rgba(255, 120, 180, .18),
-    0 6px 16px rgba(255, 120, 180, .12),
-    /* inner top edge highlight */
+    0 14px 34px var(--glow1),
+    0 6px 16px var(--glow2),
     inset 0 1px 0 rgba(255,255,255,.70),
-    /* inner bottom shading */
-    inset 0 -1px 0 rgba(255, 120, 180, .10);
+    inset 0 -1px 0 rgba(255, 120, 180, .08);
 
-  overflow:hidden;
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  overflow: hidden;
 }
 
-/* extra inner “glass rim” (thin white line) */
+/* inner rim */
 .card::before{
   content:"";
   position:absolute;
   inset: 1px;
   border-radius: 27px;
-  border: 1px solid rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.60);
   pointer-events:none;
   opacity:.55;
 }
 
-/* micro-noise texture (makes it feel like real glass) */
+/* subtle noise */
 .card::after{
   content:"";
   position:absolute;
   inset:0;
   border-radius: 28px;
   pointer-events:none;
-  opacity:.12;
+  opacity:.10;
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
 }
 
-/* iOS-style sheen */
 .sheen{
   position:absolute;
   inset:-35%;
@@ -108,28 +99,24 @@ body{
   pointer-events:none;
 }
 
-/* header */
 .top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
 .badge{
-  font-size: 12px;
-  letter-spacing: .10em;
+  font-size: 11px;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  padding: 8px 12px;
+  padding: 7px 12px;
   border-radius: 999px;
-
-  /* glassy badge */
   background: rgba(255,255,255,.45);
-  border: 1px solid rgba(255,120,180,.25);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
-
-  color: rgba(12,12,16,.78);
+  border: 1px solid rgba(255,140,195,.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+  color: rgba(15,15,20,.78);
 }
 
 .meta{
@@ -137,64 +124,80 @@ body{
   color: var(--muted2);
 }
 
-/* title */
-.title{
-  margin: 6px 0 14px;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: .2px;
-  color: var(--text);
-}
-
-/* countdown */
-.count{
+.headline{
   display:flex;
   align-items: baseline;
+  justify-content: space-between;
   gap: 12px;
-  margin: 6px 0 6px;
 }
 
-.big{
-  font-size: 66px;
-  font-weight: 820;
-  line-height: 1;
-  letter-spacing: -1.6px;
-  color: rgba(10,10,12,.92);
-  text-shadow: 0 6px 16px rgba(255,120,180,.10);
+.title{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: .2px;
 }
 
-.unit{
-  font-size: 16px;
+.date{
+  font-size: 13px;
   color: var(--muted);
+  font-weight: 600;
 }
 
 .sub{
-  margin-top: 8px;
-  font-size: 13px;
+  margin-top: 4px;
+  font-size: 12px;
   color: var(--muted2);
 }
 
-/* footer pills */
+/* Countdown row */
+.grid{
+  margin-top: 12px;
+  display:grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.cell{
+  border-radius: 16px;
+  padding: 10px 10px 9px;
+  background: rgba(255,255,255,.32);
+  border: 1px solid rgba(255,140,195,.20);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.60);
+  text-align:center;
+}
+
+.num{
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.05;
+  color: rgba(12,12,16,.92);
+}
+
+.lab{
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--muted2);
+  letter-spacing: .02em;
+}
+
 .bottom{
   display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 16px;
+  justify-content:flex-end;
+  margin-top: 10px;
 }
 
 .pill{
-  font-size: 12px;
-  padding: 8px 12px;
+  font-size: 11px;
+  padding: 7px 12px;
   border-radius: 999px;
-
-  background: rgba(255,255,255,.40);
-  border: 1px solid rgba(255,120,180,.22);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
-
-  color: rgba(12,12,16,.72);
+  background: rgba(255,255,255,.35);
+  border: 1px solid rgba(255,140,195,.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+  color: rgba(15,15,20,.70);
 }
 
-@media (max-width: 420px){
-  .big{ font-size: 58px; }
-  .title{ font-size: 20px; }
+/* Mobile: stack nicely */
+@media (max-width: 680px){
+  .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
