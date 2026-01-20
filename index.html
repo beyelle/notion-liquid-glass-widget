@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Notion Liquid Glass Countdown</title>
 
-  <!-- Font: kannst du ändern (siehe unten) -->
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 </head>
 <body>
   <main class="stage">
-    <section class="card" role="group" aria-label="Countdown Card">
+    <section class="card" role="group" aria-label="Countdown">
       <div class="sheen" aria-hidden="true"></div>
 
       <header class="top">
@@ -27,33 +27,15 @@
         <div class="date" id="dateText">—</div>
       </div>
 
-      <div class="sub" id="subline">Study today</div>
+      <div class="sub" id="subline">Loading…</div>
 
-      <div class="grid" aria-label="Countdown values">
-        <div class="cell">
-          <div class="num" id="months">--</div>
-          <div class="lab">Months</div>
-        </div>
-        <div class="cell">
-          <div class="num" id="weeks">--</div>
-          <div class="lab">Weeks</div>
-        </div>
-        <div class="cell">
-          <div class="num" id="days">--</div>
-          <div class="lab">Days</div>
-        </div>
-        <div class="cell">
-          <div class="num" id="hours">--</div>
-          <div class="lab">Hours</div>
-        </div>
-        <div class="cell">
-          <div class="num" id="minutes">--</div>
-          <div class="lab">Minutes</div>
-        </div>
-        <div class="cell">
-          <div class="num" id="seconds">--</div>
-          <div class="lab">Seconds</div>
-        </div>
+      <div class="grid">
+        <div class="cell"><div class="num" id="months">00</div><div class="lab">Months</div></div>
+        <div class="cell"><div class="num" id="weeks">00</div><div class="lab">Weeks</div></div>
+        <div class="cell"><div class="num" id="days">00</div><div class="lab">Days</div></div>
+        <div class="cell"><div class="num" id="hours">00</div><div class="lab">Hours</div></div>
+        <div class="cell"><div class="num" id="minutes">00</div><div class="lab">Minutes</div></div>
+        <div class="cell"><div class="num" id="seconds">00</div><div class="lab">Seconds</div></div>
       </div>
 
       <footer class="bottom">
