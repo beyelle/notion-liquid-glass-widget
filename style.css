@@ -1,41 +1,42 @@
-:root{
-  --bg1: #160a14;
-  --bg2: #0e050c;
+/* === Force true transparency for Notion iframe === */
+html, body {
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+}
 
+/* === Color system: pink liquid glass === */
+:root{
   --glass: rgba(255, 182, 213, .18);
   --glass2: rgba(255, 182, 213, .10);
-
   --stroke: rgba(255, 170, 210, .35);
 
   --text: rgba(255,255,255,.94);
   --muted: rgba(255,220,235,.78);
   --muted2: rgba(255,200,225,.62);
-
-  --shadow: rgba(60, 0, 40, .45);
 }
 
+/* === Base === */
 *{ box-sizing: border-box; }
-html,body{ height:100%; margin:0; }
 
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
   color: var(--text);
-  background:
-    radial-gradient(900px 600px at 20% 20%, rgba(255,160,210,.28), transparent 60%),
-    radial-gradient(900px 600px at 80% 30%, rgba(255,120,180,.24), transparent 55%),
-    radial-gradient(900px 700px at 50% 90%, rgba(255,200,230,.18), transparent 55%),
-    linear-gradient(180deg, var(--bg1), var(--bg2));
+  background: transparent !important;
   display:flex;
 }
 
+/* === Container === */
 .stage{
   width: 100%;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding: 28px;
+  padding: 0; /* critical: removes dark box look */
+  background: transparent !important;
 }
 
+/* === Glass Card === */
 .card{
   position: relative;
   width: min(560px, 92vw);
@@ -43,14 +44,18 @@ body{
   padding: 22px 22px 18px;
   background: linear-gradient(135deg, var(--glass), var(--glass2));
   border: 1px solid var(--stroke);
+
+  /* soft pink glow instead of dark shadow */
   box-shadow:
-    0 22px 60px var(--shadow),
+    0 14px 40px rgba(255,120,180,.18),
     inset 0 1px 0 rgba(255,255,255,.25);
+
   backdrop-filter: blur(20px) saturate(170%);
   -webkit-backdrop-filter: blur(20px) saturate(170%);
   overflow:hidden;
 }
 
+/* === Pink sheen overlay === */
 .sheen{
   position:absolute;
   inset:-40%;
@@ -64,6 +69,7 @@ body{
   opacity:.9;
 }
 
+/* === Header === */
 .top{
   display:flex;
   align-items:center;
@@ -88,6 +94,7 @@ body{
   color: var(--muted2);
 }
 
+/* === Title === */
 .title{
   margin: 6px 0 14px;
   font-size: 22px;
@@ -95,6 +102,7 @@ body{
   letter-spacing: .2px;
 }
 
+/* === Countdown === */
 .count{
   display:flex;
   align-items: baseline;
@@ -107,11 +115,14 @@ body{
   font-weight: 780;
   line-height: 1;
   letter-spacing: -1.6px;
+
+  /* pink gradient number */
   background: linear-gradient(180deg, #fff, #ffd1ea 70%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 12px 30px rgba(255,120,180,.35);
+
+  text-shadow: 0 10px 24px rgba(255,120,180,.25);
 }
 
 .unit{
@@ -119,12 +130,14 @@ body{
   color: var(--muted);
 }
 
+/* === Subtitle === */
 .sub{
   margin-top: 8px;
   font-size: 13px;
   color: var(--muted2);
 }
 
+/* === Footer pills === */
 .bottom{
   display:flex;
   gap: 10px;
@@ -141,6 +154,7 @@ body{
   color: #ffd6ea;
 }
 
+/* === Mobile === */
 @media (max-width: 420px){
   .big{ font-size: 58px; }
   .title{ font-size: 20px; }
