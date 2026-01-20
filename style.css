@@ -1,24 +1,28 @@
-/* === Force true transparency for Notion iframe === */
+/* === HARD FORCE TRANSPARENCY (Notion iframe safe) === */
 html, body {
   background: transparent !important;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* === Color system: deep rose liquid glass === */
+/* === Color system: rich rose glass + dark text === */
 :root{
-  --glass: rgba(255, 90, 160, .35);
-  --glass2: rgba(255, 90, 160, .22);
-  --stroke: rgba(220, 60, 140, .55);
+  --glass: rgba(255, 70, 140, .50);
+  --glass2: rgba(255, 70, 140, .32);
+  --stroke: rgba(200, 40, 110, .60);
 
-  --text: rgba(255,255,255,.97);
-  --muted: rgba(255,210,230,.90);
-  --muted2: rgba(255,190,220,.75);
+  --text: rgba(25, 10, 18, .95);
+  --muted: rgba(60, 20, 40, .80);
+  --muted2: rgba(90, 35, 65, .70);
 }
 
-/* === Base === */
-*{ box-sizing: border-box; }
+/* === Base reset === */
+*{
+  box-sizing: border-box;
+  background: transparent !important;
+}
 
+/* === Body === */
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
   color: var(--text);
@@ -26,39 +30,40 @@ body{
   display:flex;
 }
 
-/* === Container === */
+/* === Container (no padding, no color, no box) === */
 .stage{
   width: 100%;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding: 0;
+  padding: 0 !important;
+  margin: 0 !important;
   background: transparent !important;
 }
 
-/* === Glass Card === */
+/* === Glass Card ONLY visible element === */
 .card{
   position: relative;
   width: min(560px, 92vw);
-  border-radius: 30px;
+  border-radius: 28px;
   padding: 24px 24px 20px;
 
   background: linear-gradient(
     135deg,
-    rgba(255, 120, 190, .45),
-    rgba(255, 80, 150, .25)
+    rgba(255, 120, 190, .60),
+    rgba(255, 50, 120, .40)
   );
 
   border: 1px solid var(--stroke);
 
-  /* stronger glow so it pops on white */
+  /* rich pink glow that still pops on white */
   box-shadow:
-    0 18px 45px rgba(255, 80, 150, .35),
-    0 4px 12px rgba(255, 80, 150, .25),
-    inset 0 1px 0 rgba(255,255,255,.35);
+    0 18px 40px rgba(255, 60, 130, .35),
+    0 6px 16px rgba(255, 60, 130, .25),
+    inset 0 1px 0 rgba(255,255,255,.45);
 
-  backdrop-filter: blur(22px) saturate(175%);
-  -webkit-backdrop-filter: blur(22px) saturate(175%);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
   overflow:hidden;
 }
 
@@ -67,12 +72,12 @@ body{
   position:absolute;
   inset:-40%;
   background:
-    radial-gradient(closest-side at 35% 35%, rgba(255,200,230,.55), transparent 55%),
-    radial-gradient(closest-side at 70% 25%, rgba(255,140,200,.45), transparent 60%),
-    linear-gradient(120deg, transparent, rgba(255,180,220,.55), transparent);
+    radial-gradient(closest-side at 35% 35%, rgba(255,200,230,.70), transparent 55%),
+    radial-gradient(closest-side at 70% 25%, rgba(255,140,200,.60), transparent 60%),
+    linear-gradient(120deg, transparent, rgba(255,180,220,.70), transparent);
   transform: rotate(12deg);
   pointer-events:none;
-  filter: blur(8px);
+  filter: blur(12px);
   opacity:.95;
 }
 
@@ -92,10 +97,10 @@ body{
   padding: 9px 14px;
   border-radius: 999px;
 
-  background: rgba(255,140,200,.35);
-  border: 1px solid rgba(255,110,180,.55);
+  background: rgba(255,140,200,.45);
+  border: 1px solid rgba(200,80,150,.60);
 
-  color: #ffe0f0;
+  color: rgba(35, 10, 25, .95);
 }
 
 .meta{
@@ -107,8 +112,9 @@ body{
 .title{
   margin: 6px 0 14px;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 720;
   letter-spacing: .25px;
+  color: var(--text);
 }
 
 /* === Countdown === */
@@ -121,24 +127,22 @@ body{
 
 .big{
   font-size: 68px;
-  font-weight: 800;
+  font-weight: 820;
   line-height: 1;
   letter-spacing: -1.8px;
 
-  /* stronger pink gradient number */
+  /* dark rose number */
   background: linear-gradient(
     180deg,
-    #ffffff 0%,
-    #ffd1ea 45%,
-    #ff9fd1 100%
+    rgba(40, 5, 25, 1) 0%,
+    rgba(120, 20, 80, 1) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 
   text-shadow:
-    0 10px 24px rgba(255, 90, 160, .45),
-    0 2px 6px rgba(255, 90, 160, .35);
+    0 6px 18px rgba(255, 60, 130, .35);
 }
 
 .unit{
@@ -166,10 +170,10 @@ body{
   padding: 9px 14px;
   border-radius: 999px;
 
-  background: rgba(255,120,190,.30);
-  border: 1px solid rgba(255,110,180,.50);
+  background: rgba(255,120,190,.40);
+  border: 1px solid rgba(200,80,150,.55);
 
-  color: #ffe0f0;
+  color: rgba(35, 10, 25, .95);
 }
 
 /* === Mobile === */
