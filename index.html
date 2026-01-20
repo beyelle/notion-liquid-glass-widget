@@ -1,9 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Notion Liquid Glass Countdown</title>
+
+  <!-- Font: kannst du ändern (siehe unten) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
@@ -13,26 +19,49 @@
 
       <header class="top">
         <div class="badge" id="badge">TOPIK</div>
-        <div class="meta" id="meta">Countdown</div>
+        <div class="meta" id="meta">Until</div>
       </header>
 
-      <h1 class="title" id="title">TOPIK Exam</h1>
-
-      <div class="count">
-        <div class="big" id="days">--</div>
-        <div class="unit">days left</div>
+      <div class="headline">
+        <h1 class="title" id="title">TOPIK I</h1>
+        <div class="date" id="dateText">—</div>
       </div>
 
-      <div class="sub" id="subline">Set a date to see the countdown.</div>
+      <div class="sub" id="subline">Study today</div>
+
+      <div class="grid" aria-label="Countdown values">
+        <div class="cell">
+          <div class="num" id="months">--</div>
+          <div class="lab">Months</div>
+        </div>
+        <div class="cell">
+          <div class="num" id="weeks">--</div>
+          <div class="lab">Weeks</div>
+        </div>
+        <div class="cell">
+          <div class="num" id="days">--</div>
+          <div class="lab">Days</div>
+        </div>
+        <div class="cell">
+          <div class="num" id="hours">--</div>
+          <div class="lab">Hours</div>
+        </div>
+        <div class="cell">
+          <div class="num" id="minutes">--</div>
+          <div class="lab">Minutes</div>
+        </div>
+        <div class="cell">
+          <div class="num" id="seconds">--</div>
+          <div class="lab">Seconds</div>
+        </div>
+      </div>
 
       <footer class="bottom">
-        <div class="pill" id="dateLabel">Date: —</div>
         <div class="pill" id="tzLabel">TZ: Europe/Berlin</div>
       </footer>
     </section>
   </main>
 
-  <!-- THIS LINE IS CRITICAL -->
   <script src="./script.js"></script>
 </body>
 </html>
