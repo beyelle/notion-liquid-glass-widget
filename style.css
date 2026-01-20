@@ -5,15 +5,15 @@ html, body {
   padding: 0;
 }
 
-/* === Color system: pink liquid glass === */
+/* === Color system: deep rose liquid glass === */
 :root{
-  --glass: rgba(255, 182, 213, .18);
-  --glass2: rgba(255, 182, 213, .10);
-  --stroke: rgba(255, 170, 210, .35);
+  --glass: rgba(255, 90, 160, .35);
+  --glass2: rgba(255, 90, 160, .22);
+  --stroke: rgba(220, 60, 140, .55);
 
-  --text: rgba(255,255,255,.94);
-  --muted: rgba(255,220,235,.78);
-  --muted2: rgba(255,200,225,.62);
+  --text: rgba(255,255,255,.97);
+  --muted: rgba(255,210,230,.90);
+  --muted2: rgba(255,190,220,.75);
 }
 
 /* === Base === */
@@ -32,7 +32,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding: 0; /* critical: removes dark box look */
+  padding: 0;
   background: transparent !important;
 }
 
@@ -40,18 +40,25 @@ body{
 .card{
   position: relative;
   width: min(560px, 92vw);
-  border-radius: 28px;
-  padding: 22px 22px 18px;
-  background: linear-gradient(135deg, var(--glass), var(--glass2));
+  border-radius: 30px;
+  padding: 24px 24px 20px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 120, 190, .45),
+    rgba(255, 80, 150, .25)
+  );
+
   border: 1px solid var(--stroke);
 
-  /* soft pink glow instead of dark shadow */
+  /* stronger glow so it pops on white */
   box-shadow:
-    0 14px 40px rgba(255,120,180,.18),
-    inset 0 1px 0 rgba(255,255,255,.25);
+    0 18px 45px rgba(255, 80, 150, .35),
+    0 4px 12px rgba(255, 80, 150, .25),
+    inset 0 1px 0 rgba(255,255,255,.35);
 
-  backdrop-filter: blur(20px) saturate(170%);
-  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(22px) saturate(175%);
+  -webkit-backdrop-filter: blur(22px) saturate(175%);
   overflow:hidden;
 }
 
@@ -60,13 +67,13 @@ body{
   position:absolute;
   inset:-40%;
   background:
-    radial-gradient(closest-side at 35% 35%, rgba(255,200,230,.35), transparent 55%),
-    radial-gradient(closest-side at 70% 25%, rgba(255,160,210,.30), transparent 60%),
-    linear-gradient(120deg, transparent, rgba(255,190,220,.35), transparent);
+    radial-gradient(closest-side at 35% 35%, rgba(255,200,230,.55), transparent 55%),
+    radial-gradient(closest-side at 70% 25%, rgba(255,140,200,.45), transparent 60%),
+    linear-gradient(120deg, transparent, rgba(255,180,220,.55), transparent);
   transform: rotate(12deg);
   pointer-events:none;
-  filter: blur(6px);
-  opacity:.9;
+  filter: blur(8px);
+  opacity:.95;
 }
 
 /* === Header === */
@@ -80,13 +87,15 @@ body{
 
 .badge{
   font-size: 12px;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  padding: 8px 12px;
+  padding: 9px 14px;
   border-radius: 999px;
-  background: rgba(255,180,215,.22);
-  border: 1px solid rgba(255,170,210,.45);
-  color: #ffd6ea;
+
+  background: rgba(255,140,200,.35);
+  border: 1px solid rgba(255,110,180,.55);
+
+  color: #ffe0f0;
 }
 
 .meta{
@@ -98,31 +107,38 @@ body{
 .title{
   margin: 6px 0 14px;
   font-size: 22px;
-  font-weight: 680;
-  letter-spacing: .2px;
+  font-weight: 700;
+  letter-spacing: .25px;
 }
 
 /* === Countdown === */
 .count{
   display:flex;
   align-items: baseline;
-  gap: 12px;
+  gap: 14px;
   margin: 6px 0 6px;
 }
 
 .big{
-  font-size: 66px;
-  font-weight: 780;
+  font-size: 68px;
+  font-weight: 800;
   line-height: 1;
-  letter-spacing: -1.6px;
+  letter-spacing: -1.8px;
 
-  /* pink gradient number */
-  background: linear-gradient(180deg, #fff, #ffd1ea 70%);
+  /* stronger pink gradient number */
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffd1ea 45%,
+    #ff9fd1 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 
-  text-shadow: 0 10px 24px rgba(255,120,180,.25);
+  text-shadow:
+    0 10px 24px rgba(255, 90, 160, .45),
+    0 2px 6px rgba(255, 90, 160, .35);
 }
 
 .unit{
@@ -132,7 +148,7 @@ body{
 
 /* === Subtitle === */
 .sub{
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 13px;
   color: var(--muted2);
 }
@@ -140,22 +156,24 @@ body{
 /* === Footer pills === */
 .bottom{
   display:flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .pill{
   font-size: 12px;
-  padding: 8px 12px;
+  padding: 9px 14px;
   border-radius: 999px;
-  background: rgba(255,170,210,.18);
-  border: 1px solid rgba(255,170,210,.35);
-  color: #ffd6ea;
+
+  background: rgba(255,120,190,.30);
+  border: 1px solid rgba(255,110,180,.50);
+
+  color: #ffe0f0;
 }
 
 /* === Mobile === */
 @media (max-width: 420px){
-  .big{ font-size: 58px; }
+  .big{ font-size: 60px; }
   .title{ font-size: 20px; }
 }
