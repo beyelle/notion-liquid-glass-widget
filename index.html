@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notion Liquid Glass Countdown</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="stage">
+    <section class="card" role="group" aria-label="Countdown Card">
+      <div class="sheen" aria-hidden="true"></div>
+
+      <header class="top">
+        <div class="badge" id="badge">TOPIK</div>
+        <div class="meta" id="meta">Countdown</div>
+      </header>
+
+      <h1 class="title" id="title">TOPIK Exam</h1>
+
+      <div class="count">
+        <div class="big" id="days">--</div>
+        <div class="unit">days left</div>
+      </div>
+
+      <div class="sub" id="subline">Set a date to see the countdown.</div>
+
+      <footer class="bottom">
+        <div class="pill" id="dateLabel">Date: —</div>
+        <div class="pill" id="tzLabel">TZ: Europe/Berlin</div>
+      </footer>
+    </section>
+  </main>
+
+  <!-- THIS LINE IS CRITICAL -->
+  <script src="./script.js"></script>
+</body>
+</html>
